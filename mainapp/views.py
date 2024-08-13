@@ -1,6 +1,8 @@
 from django.shortcuts import render,HttpResponse
-from .models import Product
+from .models import Product,StudentRegisteration
+from .forms import StudentForm
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 # Create your views here.
 
@@ -29,3 +31,23 @@ def signuphandle(request):
 
 def loginhandle(request):
     return render(request,'login.html')
+
+
+def Student(request):
+    if request.method == "POST":
+        form = StudentForm(request.POST,request.FILES)
+        if form.is_valid():
+            fullname = request.POST['FullName']
+            email = request.POST['Email']
+            roll_no = request.POST['Roll_no']
+            mobile_no = request.POST['Mobile_No']
+            address = request.POST['Address']
+            pin_code = request.POST['Pin_code']
+            image = request.FILES['Image']
+            StudentRegisteration(FullName = fullname , Email = email , Roll_no = roll_no , Mobile_No = mobile_no , Address = address , Pin_code = pin_code , Image = image).save()
+            messages.success(request,'Your Form Successfull Submited !!')
+    form = StudentForm()
+    context = {
+        'form':form
+    }
+    return render(request,'Student.html',context)

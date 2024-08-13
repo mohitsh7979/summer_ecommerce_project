@@ -23,3 +23,13 @@ class Product(models.Model):
     def __str__(self):
         return self.title
     
+    
+class StudentRegisteration(models.Model):
+    FullName = models.CharField(max_length=50)
+    Email = models.EmailField()
+    Roll_no = models.IntegerField()
+    Mobile_No = models.IntegerField()
+    Address = models.TextField()
+    Pin_code = models.IntegerField()
+    Image = models.ImageField(upload_to='media')
+    
