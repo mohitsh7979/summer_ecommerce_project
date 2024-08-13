@@ -23,6 +23,8 @@ from mainapp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/',views.index),
-    path('product/',views.product)
+    path('product/',views.product),
+    path('signup/',views.signuphandle),
+    path('login/',views.loginhandle)
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
     
