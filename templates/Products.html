@@ -1,44 +1,28 @@
-{% extends "index.html" %}
- {% block outlet %}
+{% extends "index.html" %} {% block outlet %}
 
 <div class="container mt-5">
   <div class="row">
     {% for i in product %}
     <div class="col">
-      <div class="card" style="width: 18rem">
-        <img src="/media/{{i.image}}" class="card-img-top" alt="..." style = "height:300px" />
-        <div class="card-body">
-          <h5 class="card-title">{{i.title}}</h5>
-          <p class="card-text">
-            Rs.{{i.price}}
-          </p>
-          <a href="#" class="btn btn-dark w-50">Add To Cart</a>
-          <a href="#" class="btn btn-dark ">Buy Now</a>
+      <a href="/description/{{i.id}}/">
+        <div class="card" style="width: 18rem">
+          <img
+            src="/media/{{i.image}}"
+            class="card-img-top"
+            alt="..."
+            style="height: 300px"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{i.title}}</h5>
+            <p class="card-text">Rs.{{i.price}}</p>
+            {% comment %} <a href="#" class="btn btn-dark w-50">Add To Cart</a>
+            <a href="#" class="btn btn-dark">Buy Now</a> {% endcomment %}
+          </div>
         </div>
-      </div>
+      </a>
     </div>
     {% endfor %}
   </div>
-</div> 
+</div>
 
 {% endblock %}
-
-{% comment %} <table border = "">
- <tr>
-  <th>Id</th>
-  <th>Title</th>
-  <th>Price</th>
-  <th>Description</th>
- </tr>
-  {% for i in product %}
-  <tr>
-   <td>{{i.id}}</td>
-   <td>{{i.title}}</td>
-   <td>{{i.price}}</td>
-   <td>{{i.description}}</td>
-  </tr>
-  {% endfor %}
-
-</table>
-
-{% endblock outlet %}  {% endcomment %}

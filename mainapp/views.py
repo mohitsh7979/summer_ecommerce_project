@@ -51,3 +51,10 @@ def Student(request):
         'form':form
     }
     return render(request,'Student.html',context)
+
+def ProductDescription(request,id):
+    product = Product.objects.filter(id=id)
+    context = {
+        'prod':product[0]
+    }
+    return render(request,'ProductDescription.html',context)

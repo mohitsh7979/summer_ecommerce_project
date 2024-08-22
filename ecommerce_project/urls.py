@@ -26,6 +26,7 @@ urlpatterns = [
     path('product/',views.product),
     path('signup/',views.signuphandle),
     path('login/',views.loginhandle),
-    path('Student/',views.Student)
+    path('Student/',views.Student),
+    path('description/<int:id>/',views.ProductDescription)
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
     
