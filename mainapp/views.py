@@ -1,5 +1,5 @@
 from django.shortcuts import render,HttpResponse
-from .models import Product,StudentRegisteration
+from .models import Product,StudentRegisteration,Cart
 from .forms import StudentForm
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -58,3 +58,14 @@ def ProductDescription(request,id):
         'prod':product[0]
     }
     return render(request,'ProductDescription.html',context)
+
+def cart(request,id):
+    current_user = request.user
+    filter_product = Product.objects.get(id=id)
+    Cart(user=current_user,product=filter_product,quantity=1).save()
+    
+    cart_product = Cart.objects.filter(user=request.user)
+    context = {
+        'cart_product':cart_product
+    }
+    return render(request,'Cart.html',context)
